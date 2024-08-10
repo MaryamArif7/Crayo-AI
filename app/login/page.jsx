@@ -16,10 +16,10 @@ export default function Login() {
     const [LoginLoading, setLoginLoading] = useState(false);
 
     useEffect(() => {
-        // Simulate loading data or some async operation
+       
         setTimeout(() => {
             setLoginLoading(false);
-        }, 2000); // Adjust the timeout duration as needed
+        }, 2000); 
     }, []);
 
     useEffect(() => {
@@ -27,15 +27,14 @@ export default function Login() {
             setIsLoading(false);
         };
 
-        // Check if the page is already loaded
         if (document.readyState === 'complete') {
             setIsLoading(false);
         } else {
-            // Add event listener for the load event
+            
             window.addEventListener('load', handleLoad);
         }
 
-        // Clean up the event listener
+        
         return () => {
             window.removeEventListener('load', handleLoad);
         };
@@ -70,10 +69,10 @@ export default function Login() {
 
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            router.push('/'); // Redirect to home page after successful login
+            router.push('/');
         } catch (err) {
             setError('Invalid Email or Password');
-            console.error('Firebase login error:', err.code, err.message); // Log detailed error
+            console.error('Firebase login error:', err.code, err.message);
             setLoginLoading(false);
         }
     };
@@ -142,14 +141,14 @@ export default function Login() {
                                 <button
                                     className="bg-gradient-to-r dark:text-gray-300 from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
                                     type="submit"
-                                    disabled={LoginLoading} // Disable the button while logging in
+                                    disabled={LoginLoading} 
                                 >
                                     {LoginLoading ? 'Logging in...' : 'LOG IN'}
                                 </button>
                             </form>
                             <div className="flex flex-col mt-4 items-center justify-center text-sm">
                                 <h3 className="dark:text-gray-300">
-                                    Don't have an account?
+                                Don&apos;t have an account?
                                     <a
                                         className="group text-blue-400 transition-all duration-100 ease-in-out"
                                         href="/signup"
