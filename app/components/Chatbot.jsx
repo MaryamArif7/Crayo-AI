@@ -66,7 +66,7 @@ export default function ChatBox() {
     initChat();
   }, []);
 
-  //START
+
   const handleSendMessage = async () => {
     try {
       const userMessage = {
@@ -87,7 +87,7 @@ export default function ChatBox() {
 
         setMessages((prevMessages) => [...prevMessages, botMessage]);
 
-        // Stream the bot's response
+        
         const responseText = result.response.text();
         let currentIndex = 0;
         const intervalId = setInterval(() => {
@@ -101,14 +101,13 @@ export default function ChatBox() {
           if (currentIndex >= responseText.length) {
             clearInterval(intervalId);
           }
-        }, 10); // Adjust the interval to control the streaming speed
+        }, 10); 
       }
     } catch (error) {
       setError("Failed to send message. Please try again.");
     }
   };
 
-  //END
 
   const handleThemeChange = (e) => {
     setTheme(e.target.value);
@@ -132,7 +131,7 @@ export default function ChatBox() {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Prevents adding a new line in the input
+      e.preventDefault(); 
       handleSendMessage();
     }
   };
